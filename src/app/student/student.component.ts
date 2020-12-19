@@ -57,6 +57,13 @@ export class StudentComponent implements OnInit {
         this.openNav();
     }
 
+    addStudent() {
+        this.isEdit = false;
+        this.newStudent = new MarksDTO();
+        this.getSubjects();
+        this.openNav();
+    }
+
     deleteStudent(student: any) {
 
     }

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         // if the user is logged in redirect to documents page
         if (localStorage.getItem('currentUser')) {
-            this.router.navigate(['/user/document']);
+            this.router.navigate(['/login']);
         }
     }
 

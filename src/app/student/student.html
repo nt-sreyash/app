@@ -1,5 +1,5 @@
 <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
 
     <form>
         <div class="form-group">
@@ -35,7 +35,7 @@
 </div>
 
 <div id="main">
-    <button type="button" class="btn btn-default" (click)="editStudent(x)">Add</button>
+    <button type="button" class="btn btn-default" (click)="addStudent()">Add</button>
     <table class="table">
         <thead class="thead-dark">
             <tr>
