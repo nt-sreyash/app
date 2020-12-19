@@ -6,9 +6,9 @@
         <br />
         <!-- Email input -->
         <div class="form-outline mb-4">
+            <label class="form-label" for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email" minlength="5" #email="ngModel"
                 [(ngModel)]="username" required (keyup.enter)="authenticateUser()" />
-            <label class="form-label" for="email">Email address</label>
             <span *ngIf="email.invalid && (email.dirty || email.touched)" class="form-control-feedback"
                 style="font-size: 7pt !important;">
                 <span *ngIf="email.errors!.required">
@@ -22,9 +22,9 @@
 
         <!-- Password input -->
         <div class="form-outline mb-4">
+            <label class="form-label" for="pwd">Password</label>
             <input type="password" class="form-control" id="pwd" name="pwd" #pwd="ngModel" type="password"
                 [(ngModel)]="password" required (keyup.enter)="authenticateUser()" />
-            <label class="form-label" for="pwd">Password</label>
             <span *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="form-control-feedback"
                 style="font-size: 7pt !important;">
                 <span *ngIf="pwd.errors!.required">
