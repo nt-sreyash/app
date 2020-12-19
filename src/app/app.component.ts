@@ -1,35 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppService } from './app.service';
-import { Student, MarksDTO } from './app.model';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+
+export class AppComponent {
   title = 'my-app';
-  marks: any[];
-  selectedEntry!: MarksDTO;
-  isEdit: boolean = false;
 
-  constructor(public appService: AppService) {
-    this.marks = new Array<any>();
-  }
-
-  ngOnInit() {
-    this.getStudents();
-  }
-
-  getStudents() {
-    this.appService.getAllMarks().subscribe(res => {
-      this.marks = res as any[];
-      console.log(this.marks);
-    });
-  }
-
-  onSelect(x: any) {
-    console.log(x);
+  constructor(public appService: AppService, private router: Router) {
+    // if the user is logged in redirect to documents page
+    if (localStorage.getItem('currentUser')) {
+      this.router.navigate(['/student']);
+    }
   }
 }

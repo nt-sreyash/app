@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Student } from './app.model';
 
 @Injectable()
 export class AppService {
 
+    user: any;
     baseUrl = 'http://localhost:8080/api';
 
     constructor(private http: HttpClient) { }
@@ -30,4 +30,17 @@ export class AppService {
         return this.http.delete(this.baseUrl + '/' + studentId);
     }
 
+    logout() {
+        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
+    }
+
+    loginUser(username: string, password: string) {
+        this.user = {
+            strategy: 'local',
+            email: username,
+            password: password
+        };
+        return this.http.post('', this.user);
+    }
 }

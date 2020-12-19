@@ -1,0 +1,67 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </form>
+
+</div>
+
+<div id="main">
+    <button type="button" class="btn btn-default" (click)="editStudent(x)">Add</button>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Roll Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Session</th>
+                <th scope="col">Standard</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Marks</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of marks" (click)="onSelect(x)">
+                <th scope="row">{{x.rollNo}}</th>
+                <td>{{x.studentName}}</td>
+                <td>{{x.examSession}}</td>
+                <td>{{x.standard}}</td>
+                <td>{{x.subject}}</td>
+                <td>{{x.marks}}</td>
+                <td>
+                    <button type="button" class="btn btn-default" (click)="editStudent(x)">Edit</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-default" (click)="deleteStudent(x)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

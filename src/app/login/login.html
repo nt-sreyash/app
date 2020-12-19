@@ -1,0 +1,33 @@
+<form>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="email" class="form-control" id="email" name="email" minlength="5" #email="ngModel"
+            [(ngModel)]="username" required (keyup.enter)="authenticateUser()" />
+        <label class="form-label" for="email">Email address</label>
+        <span *ngIf="email.invalid && (email.dirty || email.touched)" class="form-control-feedback"
+            style="font-size: 7pt !important;">
+            <span *ngIf="email.errors.required">
+                Email is required.
+            </span>
+            <span *ngIf="email.errors.minlength">
+                Email must be at least 5 characters long.
+            </span>
+        </span>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <input type="password" class="form-control" id="pwd" name="pwd" #pwd="ngModel" type="password"
+            [(ngModel)]="password" required (keyup.enter)="authenticateUser()" />
+        <label class="form-label" for="pwd">Password</label>
+        <span *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="form-control-feedback"
+            style="font-size: 7pt !important;">
+            <span *ngIf="pwd.errors.required">
+                Password is required.
+            </span>
+        </span>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block" (click)="authenticateUser()">Sign in</button>
+</form>
