@@ -8,14 +8,15 @@
         <div class="form-outline mb-4">
             <label class="form-label" for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email" minlength="5" #email="ngModel"
-                [(ngModel)]="username" required (keyup.enter)="authenticateUser()" />
+                [(ngModel)]="username" required (keyup.enter)="authenticateUser()"
+                pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" />
             <span *ngIf="email.invalid && (email.dirty || email.touched)" class="form-control-feedback"
-                style="font-size: 7pt !important;color: red;">
+                style="font-size: 8pt !important;color: red;">
                 <span *ngIf="email.errors!.required">
                     Email is required.
                 </span>
-                <span *ngIf="email.errors!.minlength">
-                    Email must be at least 5 characters long.
+                <span *ngIf="email.errors?.pattern" class="text-danger">
+                    Please provide a valid email address
                 </span>
             </span>
         </div>
@@ -26,7 +27,7 @@
             <input type="password" class="form-control" id="pwd" name="pwd" #pwd="ngModel" type="password"
                 [(ngModel)]="password" required (keyup.enter)="authenticateUser()" />
             <span *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="form-control-feedback"
-                style="font-size: 7pt !important;color: red;">
+                style="font-size: 8pt !important;color: red;">
                 <span *ngIf="pwd.errors!.required">
                     Password is required.
                 </span>
@@ -36,7 +37,8 @@
         <!--new-->
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="pwd.invalid || email.invalid" (click)="authenticateUser()">Sign in</button>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="pwd.invalid || email.invalid"
+            (click)="authenticateUser()">Sign in</button>
 
         <br />
         <hr>
